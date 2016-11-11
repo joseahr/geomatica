@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "nombre": "IGLESIA PARROQUIAL DE SAN ESTEBAN", "numpol": "5", "idnotes": "004197", "codvia": "67590", "telefono": "963918276", "ruta": "5" }, "geometry": { "type": "Point", "coordinates": [ -0.373245739750917, 39.476100796615739 ] } },
+{ "type": "Feature", "properties": { "nombre": "PALACIO DE LOS VALERIOLA", "numpol": "31", "idnotes": "004169", "codvia": "45090", "telefono": "0", "ruta": "5" }, "geometry": { "type": "Point", "coordinates": [ -0.373152165973196, 39.473954598888525 ] } },
+{ "type": "Feature", "properties": { "nombre": "COLEGIO ESCUELAS PIAS", "numpol": "6", "idnotes": "002154", "codvia": "15210", "telefono": "963915800", "ruta": "6" }, "geometry": { "type": "Point", "coordinates": [ -0.381802255584231, 39.473906602300914 ] } },
+{ "type": "Feature", "properties": { "nombre": "MUSEO DEL COLEGIO ARTE MAYOR DE LA SEDA", "numpol": "7", "idnotes": "004284", "codvia": "36420", "telefono": "963511951", "ruta": "6" }, "geometry": { "type": "Point", "coordinates": [ -0.380907691445735, 39.470796438000761 ] } },
+{ "type": "Feature", "properties": { "nombre": "TEATRO PRINCIPAL", "numpol": "15", "idnotes": "006113", "codvia": "8580", "telefono": "963539200", "ruta": "7" }, "geometry": { "type": "Point", "coordinates": [ -0.374476430745871, 39.470579221892166 ] } },
+{ "type": "Feature", "properties": { "nombre": "PLAZA REDONDA", "numpol": "", "idnotes": "004151", "codvia": "42030", "telefono": "0", "ruta": "7" }, "geometry": { "type": "Point", "coordinates": [ -0.376618494862359, 39.473582476673933 ] } },
+{ "type": "Feature", "properties": { "nombre": "ASILO MARQUES DE CAMPO", "numpol": "36", "idnotes": "000045", "codvia": "2850", "telefono": "963910530", "ruta": "7" }, "geometry": { "type": "Point", "coordinates": [ -0.382589181428128, 39.478338620130799 ] } },
+{ "type": "Feature", "properties": { "nombre": "BENEFICENCIA", "numpol": "36", "idnotes": "004190", "codvia": "2850", "telefono": "963883565", "ruta": "7" }, "geometry": { "type": "Point", "coordinates": [ -0.383293643309044, 39.478462592368203 ] } },
+{ "type": "Feature", "properties": { "nombre": "MUSEO BENLLIURE", "numpol": "23", "idnotes": "007541", "codvia": "11400", "telefono": "963911662", "ruta": "7" }, "geometry": { "type": "Point", "coordinates": [ -0.379022989964787, 39.480744643716861 ] } },
+{ "type": "Feature", "properties": { "nombre": "CASA VESTUARIO", "numpol": "1", "idnotes": "000050", "codvia": "76650.0", "telefono": "0", "ruta": "6" }, "geometry": { "type": "Point", "coordinates": [ -0.375400846099001, 39.475994587384868 ] } },
+{ "type": "Feature", "properties": { "nombre": "CATEDRAL", "numpol": "S\/N", "idnotes": "004126", "codvia": "78000.0", "telefono": "963918127", "ruta": "3" }, "geometry": { "type": "Point", "coordinates": [ -0.375128606234363, 39.47563573834509 ] } },
+{ "type": "Feature", "properties": { "nombre": "MIGUELETE", "numpol": "S\/N", "idnotes": "002153", "codvia": "78000.0", "telefono": "963918127", "ruta": "3" }, "geometry": { "type": "Point", "coordinates": [ -0.37563253759751, 39.475310366941116 ] } }
+]
+}
