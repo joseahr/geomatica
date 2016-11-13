@@ -225,7 +225,7 @@ class ObservationParser(object):
                         sats = re.findall(self.REGEX_SATS, ''.join(obsArray[:2]) )
 
                     ## Obeto que almacenará las observaciones para esta época
-                    obsObj = { 'EPOCA' : date, 'SATELITES_OBSERVADOS' : sats, 'OBSERVACIONES' : {} }
+                    obsObj = { 'EPOCA' : date, 'SATELITES_OBSERVADOS' : sats, 'OBSERVACIONES' : {}, 'OK_FLAG' : ok_flag, 'NUM_SATS' : num_sats }
 
                     ## step indica cada cuantas files la observación pertenece
                     ## a otro satélite
@@ -328,10 +328,10 @@ def main():
     ## Imprimimos para la época tal, las obaservaciones del satélite G02
     print obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35), 'G02')
     ## Imprimimos para la época tal, el observable P2 del satélite G02
-    print obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35), 'G02', 'P2')
+    print obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35))
     ## No existe
-    rr = obsParser.getObservation(dt.datetime(2015, 2, 28, 13, 45, 35), 'G02', 'P2') or 'a'
-    print rr
+    ##rr = obsParser.getObservation(dt.datetime(2015, 2, 28, 13, 45, 35), 'G02', 'P2') or 'a'
+    ##print rr
 
 ## Si estamos ejecutando directamente
 ## este fichero la variable __name__ contendrá el valor "__main__"

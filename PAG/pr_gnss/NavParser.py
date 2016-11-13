@@ -48,6 +48,23 @@ class NavigationParser(object):
     '''
     def getBody(self):
         return self.body
+    
+    '''
+    @@ getParams(epoca, satelite)
+    '''
+    def getParams(self, epoca, satelite):
+        try :
+            if re.match(r"[RG]\d+", satelite):
+                satelite = re.sub('G','',satelite)
+                satelite = re.sub('R','',satelite)
+            satelite = float(satelite)
+            res = [ [x, x['epoca'] - epoca ] for x in self.body if x['sat_prn'] == satelite ]
+            res = sorted(res, key = lambda x : x[1])
+            return res[0][0] if len(res) else None
+        except Exception as e:
+            print e
+            return
+
 
     def __parse(self, file):
         ## Abrimos el fichero
@@ -59,12 +76,12 @@ class NavigationParser(object):
         for index, line in enumerate(nav) :
             if 'ION ALPHA' in line :
                 line = re.sub('D', 'E', line)
-                ion_alfa = map(float, re.findall(self.REGEX_EXTRACT_FLOAT_E, line))
+                ion_alfa = map(float, re.findall( self.REGEX_EXTRACT_FLOAT_E, line) )
                 self.header.update({ 'ION_ALPHA' : ion_alfa })
                 continue
             if 'ION BETA' in line :
                 line = re.sub('D', 'E', line)
-                ion_beta = map(float, re.findall(self.REGEX_EXTRACT_FLOAT_E, line))
+                ion_beta = map(float, re.findall( self.REGEX_EXTRACT_FLOAT_E, line))
                 self.header.update({ 'ION_BETA' : ion_beta })
                 continue
             if 'LEAP SECONDS' in line :
@@ -87,10 +104,10 @@ class NavigationParser(object):
                     
                     values = map(float, re.findall(self.REGEX_PARSE_LINEA_NAV, re.sub('D', 'E', ''.join(navArray)) ))[:-2]
                     values[1] += 2000
-                    epoca = dt.datetime(*map(int,  values[1:7] ) )
+                    epoca = dt.datetime( *map(int,  values[1:7]) )
                     values[1:7] = [epoca]
 
-                    navObj = dict(zip(keys, values))
+                    navObj = dict( zip(keys, values) )
                     self.body.append(navObj)
 
                     try :
@@ -109,7 +126,9 @@ def main():
     ## Creamos un objeto de la clase
     navParser = NavigationParser('brdc0590-1.11n')
     print navParser.getHeader()
-    print navParser.getBody()
+    print navParser.getBody()[0]
+    print navParser.getParams(dt.datetime(2011,2, 28), 'G01')
+
 
 ## Si estamos ejecutando directamente
 ## este fichero la variable __name__ contendrá el valor "__main__"
