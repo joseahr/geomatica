@@ -97,7 +97,7 @@ class NavigationParser(object):
                     navArray = nav[idx : idx + 8]
                     keys = [
                         'sat_prn', 'epoca', 'sv_clock_bias', 'sv_clock_drift', 'sv_clock_drift_rate', 'iode', 'crs'\
-                        , 'delta_n', 'mo', 'cuc', 'eccentricity', 'cus', 'sqrt_a', 'toe', 'cic', 'omega', 'cis', 'lo', 'crc', 'omega_2', 'omega_dot'\
+                        , 'delta_n', 'mo', 'cuc', 'eccentricity', 'cus', 'sqrt_a', 'toe', 'cic', 'omega', 'cis', 'io', 'crc', 'omega_2', 'omega_dot'\
                         , 'idot', 'l2_codes_channel', 'gps_week', 'l2_p_data_flag', 'sv_accuraccy', 'sv_health', 'tgd', 'iodc', 'transmission_time'\
                         , 'fit_interval'
                     ]
