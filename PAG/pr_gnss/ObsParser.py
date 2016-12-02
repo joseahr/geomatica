@@ -202,10 +202,10 @@ class ObservationParser(object):
 
                     ## Obtenemos la fecha de la época de observación y, m, d, hh, mm, ss
                     ## El OK_FLAG y el número de satélites observados
-                    _, m, d, hh, mm, ss, ok_flag, num_sats = map( int, map( float, re.findall(self.REGEX_PARSE_LINEA_INICIO_EPOCA, obsArray[0]) ) )
+                    y, m, d, hh, mm, ss, ok_flag, num_sats = map( int, map( float, re.findall(self.REGEX_PARSE_LINEA_INICIO_EPOCA, obsArray[0]) ) )
 
                     ## El año lo cogermos de la cabecera ya que en la época aparece 11 en vez de 2011
-                    y  = self.header['FIRST_OBS_TIME'].year
+                    y += 2000
 
                     ## Creamos un objeto datetime
                     date = dt.datetime( y, m, d, hh, mm, ss )
@@ -251,11 +251,12 @@ class ObservationParser(object):
 
                         ##Obtenemos la observación
                         the_obs = re.findall(self.REGEX_PARSE_LINEA_OBS, ''.join(obsArray[obsindex : obsindex + step]) )
+                        
                         ## quitamos los espacios de la lista
                         ## El regex devuelve un array de tuplas
                         ## con chain.from_iterable() las tuplas desaparecen
                         ## y pasan dentro de la lista como strings
-                        the_obs = map(strip_, list(itertools.chain.from_iterable(the_obs)))
+                        the_obs = list(map(strip_, list(itertools.chain.from_iterable(the_obs))))
 
                         ## El regex nos puede dejar hiuecos al final si no hay observaciones
                         ## con esto rellenamos los huecos
@@ -266,7 +267,7 @@ class ObservationParser(object):
                             the_obs[len(the_obs):] = ['' for x in range(size)]
 
                         ## Nombre del satélite
-                        sat = sats[ (obsindex - start) / step ]
+                        sat = sats[ int((obsindex - start) / step) ]
                         #print sat
 
                         ## Creamos un objeto dentro del objeto observaciones
@@ -300,7 +301,6 @@ class ObservationParser(object):
                     ## a la lista de observaciones
                     self.observations.append(obsObj)
 
-
                     try :
                         ## Llamamos a la función parseObs
                         ## con el nuevo índice
@@ -308,7 +308,7 @@ class ObservationParser(object):
                     except IndexError as e:
                         ## Si recibimos un IndexError
                         ## hemos llegado al final del archivo
-                        print e
+                        ##print (e)
                         #print 'Final de archivo'
                         '''
                         with open('resultados', 'w') as file:
@@ -324,11 +324,11 @@ def main():
     ## Creamos un objeto de la clase
     obsParser = ObservationParser('89090590-1.11o')
     ## Imprimimos la cabecera
-    print obsParser.getHeader()
+    print (obsParser.getHeader())
     ## Imprimimos para la época tal, las obaservaciones del satélite G02
-    print obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35), 'G02')
+    print (obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35), 'G02'))
     ## Imprimimos para la época tal, el observable P2 del satélite G02
-    print obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35))
+    print (obsParser.getObservation(dt.datetime(2011, 2, 28, 13, 45, 35)))
     ## No existe
     ##rr = obsParser.getObservation(dt.datetime(2015, 2, 28, 13, 45, 35), 'G02', 'P2') or 'a'
     ##print rr

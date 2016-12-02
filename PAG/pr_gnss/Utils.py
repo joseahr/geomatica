@@ -2,7 +2,6 @@
 # -*- coding: utf8 -*-
 
 from math import pi
-from math import modf
 
 class Utils(object):
     @staticmethod
@@ -18,7 +17,6 @@ class Utils(object):
         if day == 6 : day = -1
         ## Calculamos el tiempo GPS
         return ( (day + 1) * 86400 ) + int(fecha.strftime('%H')) * 3600 + int(fecha.strftime('%M')) * 60 + int(fecha.strftime('%S'))
-
 
 def main():
     from datetime import datetime

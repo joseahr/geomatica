@@ -62,7 +62,7 @@ class NavigationParser(object):
             res = sorted(res, key = lambda x : x[1])
             return res[0][0] if len(res) else None
         except Exception as e:
-            print e
+            print (e)
             return
 
 
@@ -101,8 +101,8 @@ class NavigationParser(object):
                         , 'idot', 'l2_codes_channel', 'gps_week', 'l2_p_data_flag', 'sv_accuraccy', 'sv_health', 'tgd', 'iodc', 'transmission_time'\
                         , 'fit_interval'
                     ]
-                    
-                    values = map(float, re.findall(self.REGEX_PARSE_LINEA_NAV, re.sub('D', 'E', ''.join(navArray)) ))[:-2]
+
+                    values = list(map(float, re.findall(self.REGEX_PARSE_LINEA_NAV, re.sub('D', 'E', ''.join(navArray)) )))[:-2]
                     values[1] += 2000
                     epoca = dt.datetime( *map(int,  values[1:7]) )
                     values[1:7] = [epoca]
@@ -115,7 +115,7 @@ class NavigationParser(object):
                         ## con el nuevo índice
                         parseNav(idx + 8)
                     except IndexError as e :
-                        print idx
+                        print (idx)
                         ## Hemos llegado al final del archivo
                         pass
                 parseNav()
@@ -125,9 +125,9 @@ class NavigationParser(object):
 def main():
     ## Creamos un objeto de la clase
     navParser = NavigationParser('brdc0590-1.11n')
-    print navParser.getHeader()
-    print navParser.getBody()[0]
-    print navParser.getParams(dt.datetime(2011,2, 28), 'G01')
+    print (navParser.getHeader())
+    print (navParser.getBody()[0])
+    print (navParser.getParams(dt.datetime(2011,2, 28), 'G01'))
 
 
 ## Si estamos ejecutando directamente
